@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/XiaoMi/pegasus-go-client/pegasus"
 	"io/ioutil"
+	"math/rand"
 	"path/filepath"
 	"strconv"
 	"time"
@@ -13,7 +14,8 @@ import (
 
 
 func main() {
-	msetNum := 100
+	//msetNum := 200
+	mgetNum := 2000
 	cfgPath, _ := filepath.Abs("./config.json")
 	rawCfg, err := ioutil.ReadFile(cfgPath)
 	if err != nil {
@@ -33,8 +35,26 @@ func main() {
 	if e1 != nil {
 		fmt.Println("err 发生", e1)
 	}
+	sortedKeys := make([][]byte, mgetNum)
 	total := int64(0)
-	for i := 0; i < 1000; i++ {
+	for j:=0; j < 100000; j++ {
+		for i := 0; i< mgetNum; i ++ {
+			rand1 := rand.New(rand.NewSource(time.Now().UnixNano()))
+			k := rand1.Intn(240000000)
+			s := strconv.Itoa(k)
+			sortedKeys[i] = []byte(s)
+		}
+		start := time.Now().UnixNano()
+		_, _, _ = tb.MultiGet(context.Background(), []byte("0"), sortedKeys)
+		end := time.Now().UnixNano()
+		delta := end - start
+		total = total + delta/1000000
+		fmt.Println("第 %s 次 mget， 时间= %s ns", j, delta, total)
+		time.Sleep(time.Duration(2 * 1000 * 1000 * 1000))
+	}
+
+
+/*	for i := 0; i < 1000; i++ {
 		sortedKeys := make([][]byte, msetNum)
 		values := make([][]byte, msetNum)
 		for j := 0; j < msetNum; j++ {
@@ -50,5 +70,5 @@ func main() {
 		delta := end - start
 		total = total + delta/1000000
 		fmt.Println("第 %s 次 mset， 时间= %s ns", i, delta, total)
-	}
+	}*/
 }
