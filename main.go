@@ -12,7 +12,6 @@ import (
 	"time"
 )
 
-
 func main() {
 	//msetNum := 200
 	mgetNum := 2000
@@ -37,8 +36,8 @@ func main() {
 	}
 	sortedKeys := make([][]byte, mgetNum)
 	total := int64(0)
-	for j:=0; j < 100000; j++ {
-		for i := 0; i< mgetNum; i ++ {
+	for j := 0; j < 100000; j++ {
+		for i := 0; i < mgetNum; i++ {
 			rand1 := rand.New(rand.NewSource(time.Now().UnixNano()))
 			k := rand1.Intn(240000000)
 			s := strconv.Itoa(k)
@@ -50,11 +49,9 @@ func main() {
 		delta := end - start
 		total = total + delta/1000000
 		fmt.Println("第 %s 次 mget， 时间= %s ns", j, delta, total)
-		time.Sleep(time.Duration(2 * 1000 * 1000 * 1000))
 	}
 
-
-/*	for i := 0; i < 1000; i++ {
+	/*	for i := 0; i < 1000; i++ {
 		sortedKeys := make([][]byte, msetNum)
 		values := make([][]byte, msetNum)
 		for j := 0; j < msetNum; j++ {
