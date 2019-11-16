@@ -1,6 +1,62 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"checksumSHA1": "GoT5qkT0VAVMtdwC/W7EM1dPsfw=",
+			"path": "github.com/XiaoMi/pegasus-go-client/idl/base",
+			"revision": "337e0ea1d766f73be046288ad39d69f59e6c8a31",
+			"revisionTime": "2019-04-15T10:26:52Z"
+		},
+		{
+			"checksumSHA1": "L3fFJW7HWCmEWiV2l5kFvhFjlgQ=",
+			"path": "github.com/XiaoMi/pegasus-go-client/idl/replication",
+			"revision": "337e0ea1d766f73be046288ad39d69f59e6c8a31",
+			"revisionTime": "2019-04-15T10:26:52Z"
+		},
+		{
+			"checksumSHA1": "Xi6wkG0b+QRTsMgCCobjb1CvyOI=",
+			"path": "github.com/XiaoMi/pegasus-go-client/idl/rrdb",
+			"revision": "337e0ea1d766f73be046288ad39d69f59e6c8a31",
+			"revisionTime": "2019-04-15T10:26:52Z"
+		},
+		{
+			"checksumSHA1": "WPYef0b8s6+TekRB2tgnSlb35mk=",
+			"path": "github.com/XiaoMi/pegasus-go-client/pegalog",
+			"revision": "337e0ea1d766f73be046288ad39d69f59e6c8a31",
+			"revisionTime": "2019-04-15T10:26:52Z"
+		},
+		{
+			"checksumSHA1": "TlaTLK2/fxvaI3niHNDu5/9F87E=",
+			"path": "github.com/XiaoMi/pegasus-go-client/pegasus",
+			"revision": "337e0ea1d766f73be046288ad39d69f59e6c8a31",
+			"revisionTime": "2019-04-15T10:26:52Z"
+		},
+		{
+			"checksumSHA1": "4uSiHlniP4sHnKJDz5mV/lwq/TY=",
+			"path": "github.com/XiaoMi/pegasus-go-client/rpc",
+			"revision": "337e0ea1d766f73be046288ad39d69f59e6c8a31",
+			"revisionTime": "2019-04-15T10:26:52Z"
+		},
+		{
+			"checksumSHA1": "8Ahc6F9VMKv1+OZj0UBpnNfUmgE=",
+			"path": "github.com/XiaoMi/pegasus-go-client/session",
+			"revision": "337e0ea1d766f73be046288ad39d69f59e6c8a31",
+			"revisionTime": "2019-04-15T10:26:52Z"
+		},
+		{
+			"checksumSHA1": "FlbciMVEDOIua4DgIdVR1xZfkgc=",
+			"origin": "github.com/XiaoMi/pegasus-go-client/vendor/github.com/apache/thrift/lib/go/thrift",
+			"path": "github.com/apache/thrift/lib/go/thrift",
+			"revision": "337e0ea1d766f73be046288ad39d69f59e6c8a31",
+			"revisionTime": "2019-04-15T10:26:52Z"
+		},
+		{
+			"checksumSHA1": "t95/FNK2nGCx3e6IARbO7OrcCuY=",
+			"path": "gopkg.in/tomb.v2",
+			"revision": "d5d1b5820637886def9eef33e03a27a9f166942c",
+			"revisionTime": "2016-12-08T15:16:19Z"
+		}
+	],
 	"rootPath": "github.com/mysunnyshine/fperfpegasus"
 }
