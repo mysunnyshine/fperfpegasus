@@ -13,7 +13,7 @@ import (
 )
 
 var msetNum int = 200
-var mgetNum int = 20
+var mgetNum int = 2000
 func main() {
 	cfgPath, _ := filepath.Abs("./config.json")
 	rawCfg, err := ioutil.ReadFile(cfgPath)
@@ -35,8 +35,8 @@ func main() {
 		fmt.Println("err 发生", e1)
 	}
 
-	mset(tb)
-	//mget(tb)
+	//mset(tb)
+	mget(tb)
 
 }
 
@@ -46,8 +46,7 @@ func mget(tb pegasus.TableConnector){
 	total := int64(0)
 	for j := 0; j < 10000000; j++ {
 		for i := 0; i < mgetNum; i++ {
-			rand1 := rand.New(rand.NewSource(time.Now().UnixNano()))
-			k := rand1.Intn(6)
+			k := RandInt(200000000, 500000000)
 			s := strconv.Itoa(k)
 			//fmt.Println("sss", s)
 			sortedKeys[i] = []byte(s)
@@ -63,7 +62,7 @@ func mget(tb pegasus.TableConnector){
 		end := time.Now().UnixNano()
 		delta := end - start
 		total = total + delta/1000000
-		fmt.Println("第 %s 次 mget， 时间= %s ns", j, delta, total, vvv, kkk)
+		fmt.Println("第 %s 次 mget， 时间= %s ns", j, delta, total/int64(j+1), vvv, kkk)
 	}
 }
 
@@ -86,4 +85,12 @@ func mset(tb pegasus.TableConnector) {
 		total = total + delta/1000000
 		fmt.Println(fmt.Sprintf("第 %d 次 mset， 时间= %d ns, 平均时间= %d ns", i, delta, total/int64(i-1000000+1)))
 	}
+}
+
+func RandInt(min, max int) int {
+	rand.Seed(time.Now().UnixNano())
+	if min >= max || min == 0 || max == 0 {
+		return max
+	}
+	return rand.Intn(max-min) + min
 }
